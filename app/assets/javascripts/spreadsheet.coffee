@@ -13,6 +13,18 @@ App.spreadsheet =
     @render_active_users()
 
   render_active_users: () ->
-      $('#active_users_list').html(
-        ("<li>#{user.id}</li>" for id,user of @active_users).join("")
-      )
+    $('#active_users_list').html(
+      ("<li>#{user.id}</li>" for id,user of @active_users).join("")
+    )
+
+  setup: () ->
+    container = document.getElementById('spreadsheet')
+    @hot = new Handsontable(container,
+      minSpareCols: 1
+      minSpareRows: 1
+      rowHeaders: true
+      colHeaders: true
+      contextMenu: true
+    )
+
+$ -> App.spreadsheet.setup()
