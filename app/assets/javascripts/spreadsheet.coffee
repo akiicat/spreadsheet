@@ -50,6 +50,11 @@ App.spreadsheet =
   deselect_cells: () ->
     App.active_users.select_cells(null)
 
+  update_cell: (update) ->
+    location = update.location
+    value = update.value
+    @hot.setDataAtCell(location.r, location.c, value, 'remote')
+
   setup: () ->
     @selected_cells = []
     container = document.getElementById('spreadsheet')
@@ -61,6 +66,13 @@ App.spreadsheet =
       contextMenu: true
       afterSelection: () => @select_cells(arguments)
       afterDeselect: () => @deselect_cells()
+      afterChange: (changes, source) =>
+        if source != 'remote' && changes
+          for change in changes
+            App.spread_sheet_cells.set_cell_value(
+              { r: change[0], c: change[1] },
+              change[3]
+            )
     )
 
 $ -> App.spreadsheet.setup()
