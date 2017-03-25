@@ -1,24 +1,29 @@
-# README
+# Multi-User Spreadsheet
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Using
 
-Things you may want to cover:
+- rails 5.0
+- ActionCable
+- RethinkDB
+- NoBrainer gem
 
-* Ruby version
+## Install RethinkDB
 
-* System dependencies
+```sh
+brew install rethinkdb
+brew info rethinkdb
+brew services start rethinkdb
+```
 
-* Configuration
+You can visit [http://localhost:8080/](http://localhost:8080/) to browse around its administration interface.
 
-* Database creation
+## Run Server
 
-* Database initialization
+```sh
+bundle
+rails s
+```
 
-* How to run the test suite
+## Demo
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![spreadsheets](https://raw.githubusercontent.com/akiicat/spreadsheet/master/public/spreadsheets.gif)
